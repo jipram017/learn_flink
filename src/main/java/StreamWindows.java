@@ -77,7 +77,7 @@ public class StreamWindows {
             case 6: {
                 System.out.println("Running a Flink-Twitter demo application");
                 TwitterLocationCount twitterLocationCount = new TwitterLocationCount();
-                twitterLocationCount.twitterLocationCount(env);
+                twitterLocationCount.twitterLocationCount(env, params);
                 env.execute("Flink Twitter Trending Demo Application");
                 break;
             }

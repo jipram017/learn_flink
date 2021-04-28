@@ -1,24 +1,24 @@
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.flink.api.java.utils.ParameterTool;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.JsonNode;
+import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
+import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.connectors.twitter.TwitterSource;
 
-
-import org.apache.flink.api.common.functions.*;
-import org.apache.flink.api.java.tuple.*;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.*;
-import org.apache.flink.streaming.api.datastream.*;
-import org.apache.flink.streaming.api.environment.*;
-import org.apache.flink.streaming.api.windowing.assigners.*;
-import org.apache.flink.streaming.api.windowing.time.*;
-import org.apache.flink.streaming.connectors.twitter.*;
-
-import java.util.*;
+import java.util.Properties;
 
 public class TwitterLocationCount {
-    public static void twitterLocationCount(StreamExecutionEnvironment env) throws Exception {
+    public static void twitterLocationCount(StreamExecutionEnvironment env, ParameterTool params) throws Exception {
 
         Properties props = new Properties();
-        props.setProperty(TwitterSource.CONSUMER_KEY, "RCYpjz70HTh8DO3mf89v9AwCA");
-        props.setProperty(TwitterSource.CONSUMER_SECRET, "iJeUe9pq9mLhaQPqFsr1iq8wmT1N2MR5TPUiiYvqJMd6VSg0Po");
-        props.setProperty(TwitterSource.TOKEN, "1386195886707855362-LHxhQwbWnEPRfKzJTT3A4alDVEm2Lk");
-        props.setProperty(TwitterSource.TOKEN_SECRET, "OISfk4JzDI3QsoaR1H0DIvNh1os3lUesIVMW4x6LRWMpU");
+        props.setProperty(TwitterSource.CONSUMER_KEY, params.getRequired("consumer_key"));
+        props.setProperty(TwitterSource.CONSUMER_SECRET, params.getRequired("consumer_secret"));
+        props.setProperty(TwitterSource.TOKEN, params.getRequired("token"));
+        props.setProperty(TwitterSource.TOKEN_SECRET, params.getRequired("token_secret"));
         DataStream<String> streamSource = env.addSource(new TwitterSource(props));
 
         DataStream<Tuple2<String, Integer>> tweets = streamSource

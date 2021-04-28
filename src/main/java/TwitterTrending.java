@@ -18,15 +18,10 @@ import java.util.*;
 public class TwitterTrending {
     public static void twitterTrending(StreamExecutionEnvironment env, ParameterTool params) throws Exception {
         Properties props = new Properties();
-/*        props.setProperty(TwitterSource.CONSUMER_KEY, params.getRequired("consumer_key"));
+        props.setProperty(TwitterSource.CONSUMER_KEY, params.getRequired("consumer_key"));
         props.setProperty(TwitterSource.CONSUMER_SECRET, params.getRequired("consumer_secret"));
         props.setProperty(TwitterSource.TOKEN, params.getRequired("token"));
-        props.setProperty(TwitterSource.TOKEN_SECRET, params.getRequired("token_secret"));*/
-
-        props.setProperty(TwitterSource.CONSUMER_KEY, "RCYpjz70HTh8DO3mf89v9AwCA");
-        props.setProperty(TwitterSource.CONSUMER_SECRET, "iJeUe9pq9mLhaQPqFsr1iq8wmT1N2MR5TPUiiYvqJMd6VSg0Po");
-        props.setProperty(TwitterSource.TOKEN, "1386195886707855362-LHxhQwbWnEPRfKzJTT3A4alDVEm2Lk");
-        props.setProperty(TwitterSource.TOKEN_SECRET, "OISfk4JzDI3QsoaR1H0DIvNh1os3lUesIVMW4x6LRWMpU");
+        props.setProperty(TwitterSource.TOKEN_SECRET, params.getRequired("token_secret"));
 
         // Configure Twitter source
         TwitterSource twitterSource = new TwitterSource(props);
