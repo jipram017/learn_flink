@@ -1,0 +1,10 @@
+AJI,69.7,Physics
+BONDAN,78.2,Chemistry
+TERRY,89.0,Mathematics
+NASAPARA,90.0,Computing
+HENRY,100.0,Chemistry
+INDRA,46.7,Mathematics
+FERRY,71.2,Physics
+CARL,90,Physics
+WENDY,90,Chemistry
+ADE,98.2,Computing

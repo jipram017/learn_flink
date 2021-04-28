@@ -1,0 +1,4 @@
+AJI,Physics Mathematics Chemistry
+BONDAN,Computing Web Cloud
+TERRY,Biology History Philosophy Chemistry
+NASAPARA,Computing Mathematics Chemistry Computing
